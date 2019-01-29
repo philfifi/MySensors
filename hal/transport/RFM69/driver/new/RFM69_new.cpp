@@ -650,6 +650,10 @@ LOCAL bool RFM69_sendWithRetry(const uint8_t recipient, const void *buffer,
 			}
 		}
 		RFM69_DEBUG(PSTR("!RFM69:SWR:NACK\n"));
+                // ATC
+                if (RFM69.ATCenabled) {
+                  (void)RFM69_executeATC(RFM69_RSSItoInternal(-112),RFM69.ATCtargetRSSI);
+                }
 	}
 	return false;
 }
