@@ -113,6 +113,9 @@ bool SPIFlash::initialize()
 	unselect();
 	wakeup();
 
+        Serial.print("readDeviceId= ");
+        Serial.println(readDeviceId(), HEX);
+
 	if (_jedecID == 0 || readDeviceId() == _jedecID) {
 		command(SPIFLASH_STATUSWRITE, true); // Write Status Register
 		SPI.transfer(0);                     // Global Unprotect

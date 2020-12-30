@@ -593,6 +593,9 @@ LOCAL bool RFM69_executeATC(const rfm69_RSSI_t currentRSSI, const rfm69_RSSI_t t
 		newPowerLevel--;
 	} else {
 		// nothing to adjust
+          	RFM69_DEBUG(PSTR("RFM69:ATC:TXL=%" PRIi8 "\n"),
+	            RFM69.powerLevel);
+
 		return false;
 	}
 	RFM69_DEBUG(PSTR("RFM69:ATC:ADJ TXL,cR=%" PRIi16 ",tR=%" PRIi16 "..%" PRIi16 ",TXL=%" PRIi8 "\n"),

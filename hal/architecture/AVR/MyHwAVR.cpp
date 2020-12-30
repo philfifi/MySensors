@@ -79,6 +79,17 @@ ISR (WDT_vect)
 {
 }
 
+ISR (PCINT1_vect) // handle pin change interrupt for A0 to A5 here
+{
+  _wokeUpByInterrupt = 3;
+}
+
+ISR (PCINT2_vect) // handle pin change interrupt for D0 to D7 here
+{
+  _wokeUpByInterrupt = 4;
+}
+
+
 void hwPowerDown(const uint8_t wdto)
 {
 	// Let serial prints finish (debug, log etc)
