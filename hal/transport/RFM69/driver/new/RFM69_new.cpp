@@ -627,7 +627,7 @@ LOCAL bool RFM69_sendWithRetry(const uint8_t recipient, const void *buffer,
 		}
 		// radio is in RX
 		const uint32_t enterMS = hwMillis();
-		while (hwMillis() - enterMS < RFM69_RETRY_TIMEOUT_MS && !RFM69.dataReceived) {
+		while (hwMillis() - enterMS < ((retry+1) * RFM69_RETRY_TIMEOUT_MS) && !RFM69.dataReceived) {
 			RFM69_handler();
 			if (RFM69.ackReceived) {
 				// radio is in stdby
